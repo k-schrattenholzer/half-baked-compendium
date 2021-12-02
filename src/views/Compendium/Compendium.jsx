@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect} from 'react';
 import PokemonList from '../../components/PokemonList/PokemonList';
 import {
   fetchFilteredPokemon,
@@ -18,27 +18,27 @@ export default function Compendium() {
   const [selectedType, setSelectedType] = useState('all');
 
   // TODO 😖 help!
-  if (pokemons.count !== 0) {
+  // if (pokemons.count !== 0) {}
     useEffect(() => {
       const getPokemon = async () => {
         const pokemonList = await fetchPokemon();
-         setPokemons(pokemonList);
+        setPokemons(pokemonList);
         setLoading(false);
       };
       getPokemon();
     }, []);
-  }
+  
 
   // TODO 😖 help!
     useEffect(() => {
-       async function getTypes() {
+        async function getTypes() {
         const pokemonTypes = await fetchTypes();
         setTypes(pokemonTypes);
       }
       getTypes();
     }, []);
 
-  //TODO 😖 help!
+  // TODO 😖 help!
     useEffect(() => {
       async function getFilteredPokemon() {
         if (!selectedType) return;
@@ -79,7 +79,7 @@ export default function Compendium() {
           <img src={pokeball} alt='pokeball' />
           <h1 className='titleText'>Alchemy Compendium</h1>
         </div>
-        <Controls
+        <Controls 
           name={searchName}
           handleSubmit={handleSubmit}
           handleNameChange={setSearchName}
