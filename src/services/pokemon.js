@@ -36,7 +36,7 @@ export const fetchPokemon = async () => {
   return pokemonList;
 };
 
-export const fetchSearchPokemon = (pokemonName) => {
+export const fetchSearchPokemon = async (pokemonName) => {
   const lowerCaseName = pokemonName.toLowerCase();
   return fetch(
     `https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${lowerCaseName}`
@@ -50,11 +50,10 @@ export const fetchSearchPokemon = (pokemonName) => {
 };
 
 export const fetchTypes = async () => {
-  const res = fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex/types`);
+  const res = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex/types`);
+  
+  const pokemonTypes = await res.json();
 
-  const pokemonTypes = res.json();
-
-  // get random types
   const randomTypes = pokemonTypes
     .map((pokemonType) => ({type: pokemonType.type}))
     .sort(() => 0.5 - Math.random())

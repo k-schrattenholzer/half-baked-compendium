@@ -1,7 +1,8 @@
-import React from 'react'
+// import React from 'react'
 import FilterForm from '../Forms/FilterForm'
 import SearchForm from '../Forms/SearchForm'
-import SortForm from '../Forms/SortForm'
+// SortForm does not currently exist, commenting out
+// import SortForm from '../Forms/SortForm'
 import './Controls.css'
 
 export default function Controls({
@@ -11,12 +12,12 @@ export default function Controls({
   types,
   filterChange,
   selectedType,
-  sortChange,
+  // sortChange,
 }) {
   return (
     <div className="controlsContainer">
-      <SearchForm name={name} handleSubmit={handleSubmit} handleNameChange={handleNameChange} />
-      <FilterForm types={types} filterChange={filterChange} selectedType={selectedType} />
+      <SearchForm {...{name, handleSubmit, handleNameChange}} />
+      <FilterForm {...{types, filterChange, selectedType}}/>
     </div>
   )
 }
